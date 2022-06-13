@@ -41,6 +41,8 @@ NS_ASSUME_NONNULL_BEGIN
  The image that the crop view is displaying. This cannot be changed once the crop view is instantiated.
  */
 @property (nonnull, nonatomic, strong, readonly) UIImage *image;
+@property (nonatomic, strong) UIImageView *foregroundImageView;     /* A copy of the background image view, placed over the dimming views */
+@property (nonatomic, strong) UIImageView *backgroundImageView;     /* The main image view, placed within the scroll view */
 
 /**
  The cropping style of the crop view (eg, rectangular or circular)

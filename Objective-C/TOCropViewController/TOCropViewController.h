@@ -89,6 +89,7 @@
  The original, uncropped image that was passed to this controller.
  */
 @property (nonnull, nonatomic, readonly) UIImage *image;
+@property (nonnull, nonatomic, readonly) UIImage *originalImage;
 
 /**
  The minimum croping aspect ratio. If set, user is prevented from
@@ -361,7 +362,7 @@
  
  @param image The image that will be used to crop.
  */
-- (nonnull instancetype)initWithImage:(nonnull UIImage *)image NS_SWIFT_NAME(init(image:));
+- (nonnull instancetype)initWithImage:(nonnull UIImage *)image originalImage:(nonnull UIImage *)originalImage NS_SWIFT_NAME(init(image:originalImage:));
 
 /** 
  Creates a new instance of a crop view controller with the supplied image and cropping style
@@ -369,7 +370,7 @@
  @param style The cropping style that will be used with this view controller (eg, rectangular, or circular)
  @param image The image that will be cropped
  */
-- (nonnull instancetype)initWithCroppingStyle:(TOCropViewCroppingStyle)style image:(nonnull UIImage *)image NS_SWIFT_NAME(init(croppingStyle:image:));
+- (nonnull instancetype)initWithCroppingStyle:(TOCropViewCroppingStyle)style image:(nonnull UIImage *)image originalImage:(nonnull UIImage *)originalImage NS_SWIFT_NAME(init(croppingStyle:image:originalImage:));
 
 /**
  Commits the crop action as if user pressed done button in the bottom bar themself

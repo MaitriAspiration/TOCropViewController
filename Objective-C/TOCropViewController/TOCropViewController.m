@@ -34,6 +34,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
 
 /* The target image */
 @property (nonatomic, readwrite) UIImage *image;
+@property (nonatomic, readwrite) UIImage *originalImage;
 
 /* The cropping style of the crop view */
 @property (nonatomic, assign, readwrite) TOCropViewCroppingStyle croppingStyle;
@@ -71,7 +72,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
 
 @implementation TOCropViewController
 
-- (instancetype)initWithCroppingStyle:(TOCropViewCroppingStyle)style image:(UIImage *)image
+- (instancetype)initWithCroppingStyle:(TOCropViewCroppingStyle)style image:(UIImage *)image originalImage:(UIImage *)originalImage
 {
     NSParameterAssert(image);
 
@@ -79,6 +80,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
     if (self) {
         // Init parameters
         _image = image;
+        self.originalImage = originalImage;
         _croppingStyle = style;
         
         // Set up base view controller behaviour
@@ -103,9 +105,9 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
     return self;
 }
 
-- (instancetype)initWithImage:(UIImage *)image
+- (instancetype)initWithImage:(UIImage *)image originalImage:(UIImage *)originalImage
 {
-    return [self initWithCroppingStyle:TOCropViewCroppingStyleDefault image:image];
+    return [self initWithCroppingStyle:TOCropViewCroppingStyleDefault image:image originalImage:originalImage];
 }
 
 - (void)viewDidLoad
@@ -1002,7 +1004,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
             image = self.image;
         }
         else {
-            image = [self.image croppedImageWithFrame:cropFrame angle:angle circularClip:NO];
+            image = [self.originalImage croppedImageWithFrame:cropFrame angle:angle circularClip:NO];
         }
         
         //Dispatch on the next run-loop so the animation isn't interuppted by the crop operation

@@ -483,24 +483,24 @@ open class CropViewController: UIViewController, TOCropViewControllerDelegate {
      
      @param image The image that will be used to crop.
      */
-    public init(image: UIImage) {
-        self.toCropViewController = TOCropViewController(image: image)
+    public init(image: UIImage, originalImage: UIImage) {
+        self.toCropViewController = TOCropViewController(image: image, originalImage: originalImage)
         super.init(nibName: nil, bundle: nil)
         setUpCropController()
     }
-    
+
     /**
      Creates a new instance of a crop view controller with the supplied image and cropping style
      
      @param style The cropping style that will be used with this view controller (eg, rectangular, or circular)
      @param image The image that will be cropped
      */
-    public init(croppingStyle: CropViewCroppingStyle, image: UIImage) {
-        self.toCropViewController = TOCropViewController(croppingStyle: croppingStyle, image: image)
+    public init(croppingStyle: CropViewCroppingStyle, image: UIImage, originalImage: UIImage) {
+        self.toCropViewController = TOCropViewController(croppingStyle: croppingStyle, image: image, originalImage: originalImage)
         super.init(nibName: nil, bundle: nil)
         setUpCropController()
     }
-    
+
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
